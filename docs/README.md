@@ -13,19 +13,22 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
     #Process
             Phase 1: Foundation Setup (≈ 0.5 – 1 day)
-        [ ] Initialize Next.js 16 project with TypeScript.
+        [x] Initialize Next.js 16 project with TypeScript.
             Completed: 11/04/2025
             Notes:
                 npm install next react react-dom typescript @types/react @types/node tailwindcss postcss autoprefixer @supabase/supabase-js next-mdx-remote remark remark-gfm rehype-slug rehype-autolink-headings swr zod date-fns eslint eslint-config-next prettier             
-        [ ] Configure ESLint, Prettier, Tailwind (or CSS framework).
+        [x] Configure ESLint, Prettier, Tailwind (or CSS framework).
             Completed: 11/04/2025
-            Notes:
+            Notes: 
+                npm install -D eslint-config-prettier eslint-plugin-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser prettier-plugin-tailwindcss
         [ ] Set up Vercel deployment (free tier).
             Completed: 
             Notes:
-        [ ] Set up Github 
-            Completed:
-            Notes:
+        [x] Set up Github 
+            Completed: 11/04/2025 1008
+            Notes: 
+                clc-portfolio-reboot
+                https://github.com/ChaseCoble/clc-portfolio-reboot
         Output: Barebones app running on Vercel.
             Completed: 
             Notes:
