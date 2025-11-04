@@ -21,9 +21,12 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
             Completed: 11/04/2025
             Notes: 
                 npm install -D eslint-config-prettier eslint-plugin-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser prettier-plugin-tailwindcss
-        [ ] Set up Vercel deployment (free tier).
-            Completed: 
-            Notes:
+                Version conflicts in esling-config-next
+                Ensure versioning is as follows in the package.json
+        [x] Set up Vercel deployment (free tier).
+            Completed: 11/04/2025 1025 
+            Notes: Failed because folder structure has already been built, which means it is technically in error.
+                Logged in with Github
         [x] Set up Github 
             Completed: 11/04/2025 1008
             Notes: 
@@ -31,19 +34,60 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
                 https://github.com/ChaseCoble/clc-portfolio-reboot
         Output: Barebones app running on Vercel.
             Completed: 
-            Notes:
+            Notes: 
+                Latest commit: fab0f40a527d0799ff9a511295af15566fc85d53 
+            package.json:
+                "name": "cc-portfolio-next",
+                "version": "0.1.0",
+                "private": true,
+                "scripts": {
+                  "dev": "next dev",
+                  "build": "next build",
+                  "start": "next start",
+                  "lint": "eslint"
+                },
+                "dependencies": {
+                  "@supabase/supabase-js": "^2.78.0",
+                  "date-fns": "^4.1.0",
+                  "next": "^16.0.0",
+                  "next-mdx-remote": "^5.0.0",
+                  "prettier": "^3.6.2",
+                  "react": "^19.2.0",
+                  "react-dom": "^19.2.0",
+                  "rehype-autolink-headings": "^7.1.0",
+                  "rehype-slug": "^6.0.0",
+                  "remark": "^15.0.1",
+                  "remark-gfm": "^4.0.1",
+                  "swr": "^2.3.6",
+                  "zod": "^4.1.12"
+                },
+                "devDependencies": {
+                  "@tailwindcss/postcss": "^4",
+                  "@types/node": "^20.19.24",
+                  "@types/react": "^19.2.2",
+                  "@types/react-dom": "^19.2.2",
+                  "@typescript-eslint/eslint-plugin": "^8.46.2",
+                  "@typescript-eslint/parser": "^8.46.2",
+                  "autoprefixer": "^10.4.21",
+                  "eslint": "^9.39.1",
+                  "eslint-config-next": "^16.0.0",
+                  "postcss": "^8.5.6",
+                  "tailwindcss": "^4.1.16",
+                  "typescript": "^5.9.3"
+                }
+
         Phase 2: Content Model & Database (≈ 1 – 1.5 days)
-        [ ] Create Supabase project.
-            Completed: 
-            Notes:
-        [ ] Define tables: projects, articles, article_project_refs.
-            Completed: 
-            Notes:
-        [ ] Seed with sample metadata.
-            Completed: 
-            Notes:
-        [ ] Write TypeScript types (/types/article.ts, /types/project.ts).
-            Completed: 
+        [x] Create Supabase project.
+            Completed: 11/04/2025 1037 
+            Notes: Signed in with Github
+        [x] Define tables: projects, articles, article_project_refs.
+            Completed: 11/04/2025 1059
+            Notes: Set policies to select only, update triggers set, webhooks set
+        [x] Seed with sample metadata.
+            Completed: 11/04/2025 1111
+            Notes: Utilized copilot for data generation
+        [x] Write TypeScript types (/types/article.ts, /types/project.ts).
+            Completed: 011/04/2025 1239
             Notes:
         Output: Structured metadata layer with relational querying.
             Completed: 
