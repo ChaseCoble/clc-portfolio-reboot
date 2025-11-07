@@ -87,15 +87,16 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
             Completed: 11/04/2025 1111
             Notes: Utilized copilot for data generation
         [x] Write TypeScript types (/types/article.ts, /types/project.ts).
-            Completed: 011/04/2025 1239
+            Completed: 11/04/2025 1239
             Notes:
         Output: Structured metadata layer with relational querying.
-            Completed: 
+            Completed: 11/04/2025 1242
             Notes:
+                Final Commit: c952ef9bfb809033b38968f1b55d43e64b629ee6
         Phase 3: Markdown Integration (≈ 1 day)
-        [ ] Decide storage: Firebase Storage or GitHub raw fetch.
-            Completed: 
-            Notes:
+        [x] Decide storage: Firebase Storage or GitHub raw fetch.
+            Completed: 11072025 1004 
+            Notes: chasecobledevelopment gmail
         [ ] Write /lib/markdown.ts parser (remark/next-mdx-remote).
             Completed: 
             Notes:
