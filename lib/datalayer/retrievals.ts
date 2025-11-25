@@ -33,6 +33,7 @@ export async function get_item(column: string, item: number): Promise<ArticleRow
                     apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
                     Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!}`,
                 },
+                cache: "force-cache",
                 next: {tags: [`${column == "Articles" ? "a" : "p"}${item}`]},
             } 
         )
