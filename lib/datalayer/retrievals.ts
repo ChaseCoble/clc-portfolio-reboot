@@ -40,6 +40,8 @@ export async function get_item(column: string, item: number): Promise<ArticleRow
             throw new Error(`GETITEM ERROR: ${res.status}`)
         }
         data = await res.json()
+        console.log("Cache status:", res.headers.get("x-nextjs-cache"))
+        console.log("Fetched data:", data)
         
     }catch(err){
         console.error(err)

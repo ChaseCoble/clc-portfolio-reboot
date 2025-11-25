@@ -12,9 +12,7 @@ export default async function datalayer(): Promise<DataLayer>{
     const tagMap: Record<string, string[]> = {}
     const dateformatter: Intl.DateTimeFormat = new Intl.DateTimeFormat("en-us", dateformat)
     const proj_ids: number[] = await extract_ids("Projects", supabase);
-    console.log(`Project ids retrieved: ${proj_ids}`)
     const art_ids: number[] = await extract_ids("Articles", supabase);
-    console.log(`Article ids retrieved: ${art_ids}`)
     let refs: RefRow[] = []
     try{
         const { data, error } = await supabase.from("Articles_Projects_Refs").select("*")
@@ -37,7 +35,6 @@ export default async function datalayer(): Promise<DataLayer>{
         projects: projectMap,
         tags: tagMap
     }
-    console.log(`Datalayer: ${JSON.stringify(dl)}`)
     return dl
 }
 

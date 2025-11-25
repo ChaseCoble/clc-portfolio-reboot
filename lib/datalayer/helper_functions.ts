@@ -8,7 +8,6 @@ export function ref_link(
         const link = refs.map((ref)=>{
             const proj_id = `p${ref.project_id}`
             const article_id = `a${ref.article_id}`
-            console.log(`Tagmap is currently: ${JSON.stringify(tagMap)}`)
             if (!tagMap[proj_id]) {
                 tagMap[proj_id] = []
             }

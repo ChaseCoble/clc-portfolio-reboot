@@ -36,13 +36,8 @@ export async function enrich(
 	column: string
 ): Promise<dlTypes.EnrichedArticle | dlTypes.EnrichedProject> {
 	const item_pulled: dlTypes.ProjectRow | dlTypes.ArticleRow = await get_item(column, item)
-	console.log(`item_pulled keys: ${Object.keys(item_pulled)}`)
-	console.log(`item_pulled type: ${typeof item_pulled}`)
-	console.log(`item_pulled raw: ${item_pulled}`)
 	const { id, content_md, created_at, updated_at, assets, ...rest } = item_pulled;
-	console.log(`Properties equal: ${item_pulled} created at is ${item_pulled['created_at']}`)
 	const content_html = await convert_md(content_md, assets);
-	console.log(`Created at date value: ${new Date(item_pulled['created_at'])}`)
 	const created_at_readable = date_formatter.format(new Date(item_pulled.created_at));
 	const updated_at_readable = date_formatter.format(new Date(item_pulled.updated_at));	
 	if (column == "Articles") {
@@ -58,8 +53,6 @@ export async function enrich(
 	  };
 
 		(map as Record<string, dlTypes.EnrichedArticle>)["a"+id] = enriched_article;
-		console.log(`Article ${enriched_article.id} has been enriched`)
-		console.log(`Map check: ${JSON.stringify(map)}`)
 		return enriched_article;
 	} else {
 	const enriched_project: dlTypes.EnrichedProject = {
@@ -73,8 +66,6 @@ export async function enrich(
 	    articles_referenced: {}
 	  };
 		(map as Record<string, dlTypes.EnrichedProject>)["p"+id] = enriched_project;
-		console.log(`Project ${enriched_project.id} has been enriched`)
-		console.log(`Map check: ${JSON.stringify(map)}`)
 		return enriched_project;
   }
 }
