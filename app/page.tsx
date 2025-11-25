@@ -1,17 +1,9 @@
-import * as dlTypes from '@/lib/types';
-import { createClient } from '@/utils/supabase/server';
-import { process_to_cache } from '@/lib/datalayer/transform_data';
+"use client"
+import { useContext } from 'react';
+import { DLContext } from '@/lib/datalayer/dlcontext';
+import { DataLayer } from '@/lib/types';
 
-export default async function TEST() {
-    const supabase = await createClient();
-    const { data: Projects } = await supabase.from('Projects').select();
-    const { data: Articles } = await supabase.from('Articles').select();
-    const { data: Refs } = await supabase.from('Articles_Projects_Refs').select()
-    const raw_cache: dlTypes.RawCache = {
-        articles: Articles as dlTypes.ArticleRow[],
-        projects: Projects as dlTypes.ProjectRow[],
-        refs: Refs as dlTypes.RefRow[]
-    } 
-    const datalayer : dlTypes.DataLayer = await process_to_cache(raw_cache)
-    return <pre>{JSON.stringify(datalayer, null, 2)}</pre>;
+export default function Home() {
+    const dl: DataLayer = useContext( DLContext )
+    return <pre>{JSON.stringify(dl, null, 2)}</pre>;
 }

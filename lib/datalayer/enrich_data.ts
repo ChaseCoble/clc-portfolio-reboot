@@ -12,22 +12,15 @@ import { convert_md } from "./markdown_processing";
 import { get_item } from "./retrievals";
 
 
-function brief(obj: dlTypes.EnrichedArticle | dlTypes.EnrichedProject): dlTypes.ArticleBriefDet | dlTypes.ProjectBriefDet{
-    const{title, updated_at_raw, id} = obj
-    const brief: dlTypes.ArticleBriefDet | dlTypes.ProjectBriefDet = {
-        title,
-        updated_at_raw
-    }
-    return brief
-}
-async function enrich(
+
+export async function enrich(
 	article: number,
 	date_formatter: Intl.DateTimeFormat,
 	articleMap: Record<string, dlTypes.EnrichedArticle>,
 	column: string
 ): Promise<dlTypes.EnrichedArticle>;
 
-async function enrich(
+export async function enrich(
 	project: number,
 	date_formatter: Intl.DateTimeFormat,
 	projectMap: Record<string, dlTypes.EnrichedProject>,
@@ -36,17 +29,22 @@ async function enrich(
 ): Promise<dlTypes.EnrichedProject>;
 
 
-async function enrich(
+export async function enrich(
 	item: number,
 	date_formatter: Intl.DateTimeFormat,
 	map: Record<string, dlTypes.EnrichedArticle | dlTypes.EnrichedProject>,
 	column: string
 ): Promise<dlTypes.EnrichedArticle | dlTypes.EnrichedProject> {
 	const item_pulled: dlTypes.ProjectRow | dlTypes.ArticleRow = await get_item(column, item)
+	console.log(`item_pulled keys: ${Object.keys(item_pulled)}`)
+	console.log(`item_pulled type: ${typeof item_pulled}`)
+	console.log(`item_pulled raw: ${item_pulled}`)
 	const { id, content_md, created_at, updated_at, assets, ...rest } = item_pulled;
+	console.log(`Properties equal: ${item_pulled} created at is ${item_pulled['created_at']}`)
 	const content_html = await convert_md(content_md, assets);
-	const created_at_readable = date_formatter.format(new Date(created_at));
-	const updated_at_readable = date_formatter.format(new Date(updated_at));	
+	console.log(`Created at date value: ${new Date(item_pulled['created_at'])}`)
+	const created_at_readable = date_formatter.format(new Date(item_pulled.created_at));
+	const updated_at_readable = date_formatter.format(new Date(item_pulled.updated_at));	
 	if (column == "Articles") {
 		const enriched_article: dlTypes.EnrichedArticle = {
 	    ...rest as Omit<dlTypes.ArticleRow, "content_md" | "assets" | "created_at" | "updated_at">,

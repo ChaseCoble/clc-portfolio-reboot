@@ -24,7 +24,7 @@ export async function extract_ids(column: string, db: SupabaseClient): Promise<n
 
 export async function get_item(column: string, item: number): Promise<ArticleRow | ProjectRow>{
 
-    let data: ArticleRow | ProjectRow | null = null
+    let data: ArticleRow[] | ProjectRow[] | null = null
     try{
         const res = await fetch(
             `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/${column}?id=eq.${item}`,
@@ -45,5 +45,5 @@ export async function get_item(column: string, item: number): Promise<ArticleRow
         console.error(err)
         throw err
     }
-    return data as ArticleRow | ProjectRow
+    return data![0] as ArticleRow | ProjectRow
 }
